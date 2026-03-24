@@ -8,474 +8,465 @@
     <link rel="icon" type="image/png" href="games/asteroid3d/images/app_icon.png">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         :root {
-            --bg-primary: #0a0b12;
-            --bg-secondary: #12141f;
-            --bg-card: #181a28;
-            --accent: #4a8eff;
-            --accent-glow: #6aa0ff;
-            --text-primary: #e8eaf0;
-            --text-secondary: #8890a8;
-            --border: #2a2d40;
+            --bg-primary: #0a0b12; --bg-secondary: #12141f; --bg-card: #181a28;
+            --accent: #4a8eff; --accent-glow: #6aa0ff;
+            --text-primary: #e8eaf0; --text-secondary: #8890a8; --border: #2a2d40;
         }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-
-        /* ===== HEADER ===== */
-        header {
-            text-align: center;
-            padding: 60px 20px 40px;
-            background: linear-gradient(180deg, #0f1020 0%, var(--bg-primary) 100%);
-            border-bottom: 1px solid var(--border);
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            font-weight: 300;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        header h1 span {
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        header p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        /* ===== NAV ===== */
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            padding: 16px 20px;
-            background: var(--bg-secondary);
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-        }
-
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: color 0.2s;
-        }
-
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
+        header { text-align: center; padding: 60px 20px 40px; background: linear-gradient(180deg, #0f1020 0%, var(--bg-primary) 100%); border-bottom: 1px solid var(--border); }
+        header h1 { font-size: 2.5rem; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; }
+        header h1 span { color: var(--accent); font-weight: 600; }
+        header p { color: var(--text-secondary); font-size: 1.1rem; max-width: 500px; margin: 0 auto; }
+        nav { display: flex; justify-content: center; align-items: center; gap: 24px; padding: 14px 20px; background: var(--bg-secondary); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); flex-wrap: wrap; }
+        nav a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
         nav a:hover { color: var(--accent); }
-
-        /* ===== HERO ===== */
-        .hero {
-            position: relative;
-            overflow: hidden;
-            padding: 80px 20px;
-            text-align: center;
-            background:
-                radial-gradient(ellipse at 30% 50%, rgba(74, 142, 255, 0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 70% 30%, rgba(120, 80, 255, 0.06) 0%, transparent 50%),
-                var(--bg-primary);
-        }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero-icon {
-            width: 120px;
-            height: 120px;
-            border-radius: 24px;
-            margin-bottom: 24px;
-            box-shadow: 0 8px 40px rgba(74, 142, 255, 0.3);
-        }
-
-        .hero h2 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, #fff 0%, #a0b8ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero .tagline {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero .cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 36px;
-            background: var(--accent);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 20px rgba(74, 142, 255, 0.4);
-        }
-
-        .hero .cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 30px rgba(74, 142, 255, 0.5);
-        }
-
-        .hero .cta svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* ===== SCREENSHOT GALLERY ===== */
-        .gallery {
-            padding: 60px 20px;
-            background: var(--bg-secondary);
-        }
-
-        .gallery h3 {
-            text-align: center;
-            font-size: 1.8rem;
-            font-weight: 300;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-            color: var(--text-secondary);
-        }
-
-        .gallery-scroll {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            padding: 0 40px 20px;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .gallery-scroll::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .gallery-scroll::-webkit-scrollbar-track {
-            background: var(--bg-primary);
-            border-radius: 3px;
-        }
-
-        .gallery-scroll::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 3px;
-        }
-
-        .gallery-scroll img {
-            flex-shrink: 0;
-            width: 560px;
-            height: auto;
-            border-radius: 12px;
-            scroll-snap-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s;
-        }
-
-        .gallery-scroll img:hover {
-            transform: scale(1.02);
-        }
-
-        /* ===== FEATURES ===== */
-        .features {
-            padding: 80px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .features h3 {
-            text-align: center;
-            font-size: 1.8rem;
-            font-weight: 300;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 50px;
-            color: var(--text-secondary);
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-
-        .feature-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            transition: border-color 0.3s, transform 0.2s;
-        }
-
-        .feature-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px);
-        }
-
-        .feature-card .icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
-        }
-
-        .feature-card h4 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            color: var(--accent-glow);
-        }
-
-        .feature-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        /* ===== SUPPORT ===== */
-        .support {
-            padding: 60px 20px;
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-        }
-
-        .support-content {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .support h3 {
-            font-size: 1.8rem;
-            font-weight: 300;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            color: var(--text-secondary);
-        }
-
-        .support p {
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-        }
-
-        .support a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .support a:hover {
-            text-decoration: underline;
-        }
-
-        .support .email {
-            display: inline-block;
-            padding: 12px 28px;
-            border: 1px solid var(--accent);
-            border-radius: 8px;
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 1rem;
-            transition: background 0.2s;
-        }
-
-        .support .email:hover {
-            background: rgba(74, 142, 255, 0.1);
-            text-decoration: none;
-        }
-
-        /* ===== PRIVACY ===== */
-        .privacy {
-            padding: 60px 20px;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .privacy h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-        }
-
-        .privacy p, .privacy ul {
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-        }
-
-        .privacy ul {
-            padding-left: 24px;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid var(--border);
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
-
-        footer a {
-            color: var(--text-secondary);
-            text-decoration: none;
-        }
-
+        .lang-picker { position: relative; }
+        .lang-btn { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-secondary); padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: border-color 0.2s; }
+        .lang-btn:hover { border-color: var(--accent); }
+        .lang-menu { display: none; position: absolute; right: 0; top: 100%; margin-top: 4px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 6px 0; min-width: 160px; box-shadow: 0 8px 30px rgba(0,0,0,0.5); z-index: 200; max-height: 320px; overflow-y: auto; }
+        .lang-menu.open { display: block; }
+        .lang-menu button { display: block; width: 100%; text-align: left; background: none; border: none; color: var(--text-secondary); padding: 8px 16px; cursor: pointer; font-size: 0.85rem; }
+        .lang-menu button:hover { background: rgba(74,142,255,0.1); color: var(--accent); }
+        .lang-menu button.active { color: var(--accent); font-weight: 600; }
+        .hero { position: relative; overflow: hidden; padding: 80px 20px; text-align: center; background: radial-gradient(ellipse at 30% 50%, rgba(74,142,255,0.08) 0%, transparent 60%), radial-gradient(ellipse at 70% 30%, rgba(120,80,255,0.06) 0%, transparent 50%), var(--bg-primary); }
+        .hero-content { max-width: 900px; margin: 0 auto; }
+        .hero-icon { width: 120px; height: 120px; border-radius: 24px; margin-bottom: 24px; box-shadow: 0 8px 40px rgba(74,142,255,0.3); }
+        .hero h2 { font-size: 3.5rem; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 16px; background: linear-gradient(135deg, #fff 0%, #a0b8ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero .tagline { font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .hero .cta { display: inline-flex; align-items: center; gap: 10px; padding: 14px 36px; background: var(--accent); color: #fff; text-decoration: none; border-radius: 12px; font-size: 1.1rem; font-weight: 600; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(74,142,255,0.4); }
+        .hero .cta:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(74,142,255,0.5); }
+        .hero .cta svg { width: 24px; height: 24px; }
+        .gallery { padding: 60px 20px; background: var(--bg-secondary); }
+        .gallery h3 { text-align: center; font-size: 1.8rem; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 40px; color: var(--text-secondary); }
+        .gallery-scroll { display: flex; gap: 20px; overflow-x: auto; padding: 0 40px 20px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+        .gallery-scroll::-webkit-scrollbar { height: 6px; }
+        .gallery-scroll::-webkit-scrollbar-track { background: var(--bg-primary); border-radius: 3px; }
+        .gallery-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        .gallery-scroll img { flex-shrink: 0; width: 560px; height: auto; border-radius: 12px; scroll-snap-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.5); transition: transform 0.3s; }
+        .gallery-scroll img:hover { transform: scale(1.02); }
+        .features { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
+        .features h3 { text-align: center; font-size: 1.8rem; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 50px; color: var(--text-secondary); }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .feature-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color 0.3s, transform 0.2s; }
+        .feature-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+        .feature-card .icon { font-size: 2rem; margin-bottom: 12px; }
+        .feature-card h4 { font-size: 1.1rem; margin-bottom: 8px; color: var(--accent-glow); }
+        .feature-card p { color: var(--text-secondary); font-size: 0.95rem; }
+        .support { padding: 60px 20px; background: var(--bg-secondary); border-top: 1px solid var(--border); }
+        .support-content { max-width: 700px; margin: 0 auto; text-align: center; }
+        .support h3 { font-size: 1.8rem; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; color: var(--text-secondary); }
+        .support p { color: var(--text-secondary); margin-bottom: 24px; }
+        .support a { color: var(--accent); text-decoration: none; }
+        .support a:hover { text-decoration: underline; }
+        .support .email { display: inline-block; padding: 12px 28px; border: 1px solid var(--accent); border-radius: 8px; color: var(--accent); text-decoration: none; font-size: 1rem; transition: background 0.2s; }
+        .support .email:hover { background: rgba(74,142,255,0.1); text-decoration: none; }
+        .privacy { padding: 60px 20px; max-width: 700px; margin: 0 auto; }
+        .privacy h3 { font-size: 1.5rem; margin-bottom: 20px; }
+        .privacy h4 { margin-top: 24px; margin-bottom: 8px; color: var(--text-primary); }
+        .privacy p, .privacy ul { color: var(--text-secondary); margin-bottom: 16px; }
+        .privacy ul { padding-left: 24px; }
+        .privacy a { color: var(--accent); }
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 0.85rem; }
+        footer a { color: var(--text-secondary); text-decoration: none; }
         footer a:hover { color: var(--accent); }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            header h1 { font-size: 1.8rem; }
-            .hero h2 { font-size: 2.2rem; }
-            .hero .tagline { font-size: 1rem; }
-            .gallery-scroll img { width: 320px; }
-            .feature-grid { grid-template-columns: 1fr; }
-        }
+        [dir="rtl"] .gallery-scroll { direction: ltr; }
+        @media (max-width: 768px) { header h1 { font-size: 1.8rem; } .hero h2 { font-size: 2.2rem; } .hero .tagline { font-size: 1rem; } .gallery-scroll img { width: 320px; } .feature-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
 <header>
     <h1>Les <span>Trolls</span> Editions</h1>
-    <p>Independent game studio crafting immersive experiences</p>
+    <p data-i18n="studio_tagline">Independent game studio crafting immersive experiences</p>
 </header>
 
 <nav>
     <a href="#asteroid3d">Asteroid 3D</a>
-    <a href="#support">Support</a>
-    <a href="#privacy">Privacy</a>
+    <a href="#support" data-i18n="nav_support">Support</a>
+    <a href="#privacy" data-i18n="nav_privacy">Privacy</a>
+    <div class="lang-picker">
+        <button class="lang-btn" id="langBtn">EN</button>
+        <div class="lang-menu" id="langMenu"></div>
+    </div>
 </nav>
 
-<!-- ===== ASTEROID 3D ===== -->
 <section id="asteroid3d">
-
     <div class="hero">
         <div class="hero-content">
             <img src="games/asteroid3d/images/app_icon.png" alt="Asteroid 3D" class="hero-icon">
             <h2>ASTEROID 3D</h2>
-            <p class="tagline">20 waves. 20 worlds. One pilot. The most complete asteroid game on the App Store.</p>
+            <p class="tagline" data-i18n="tagline">20 waves. 20 worlds. One pilot. The most complete asteroid game on the App Store.</p>
             <a href="https://apps.apple.com/app/asteroid-3d/id6744203741" class="cta">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
-                Download on the App Store
+                <span data-i18n="cta">Download on the App Store</span>
             </a>
         </div>
     </div>
-
     <div class="gallery">
-        <h3>Gameplay</h3>
+        <h3 data-i18n="gallery_title">Gameplay</h3>
         <div class="gallery-scroll">
-            <img src="games/asteroid3d/images/01_epic.png" alt="20 unique waves of asteroid combat" loading="lazy">
-            <img src="games/asteroid3d/images/02_guardian.png" alt="Epic boss battle against the Guardian" loading="lazy">
-            <img src="games/asteroid3d/images/03_planet-breaker.png" alt="4-phase final boss Planet Breaker" loading="lazy">
-            <img src="games/asteroid3d/images/04_chain-reaction.png" alt="Chain reaction cascading explosions" loading="lazy">
-            <img src="games/asteroid3d/images/10_retrobreak-easter-egg.png" alt="Retro Break easter egg - classic 2D Asteroids" loading="lazy">
+            <img src="games/asteroid3d/images/01_epic.png" alt="Asteroid 3D gameplay" loading="lazy">
+            <img src="games/asteroid3d/images/02_guardian.png" alt="Guardian boss" loading="lazy">
+            <img src="games/asteroid3d/images/03_planet-breaker.png" alt="Planet Breaker" loading="lazy">
+            <img src="games/asteroid3d/images/04_chain-reaction.png" alt="Chain reaction" loading="lazy">
+            <img src="games/asteroid3d/images/10_retrobreak-easter-egg.png" alt="Retro easter egg" loading="lazy">
         </div>
     </div>
-
     <div class="features">
-        <h3>Features</h3>
+        <h3 data-i18n="features_title">Features</h3>
         <div class="feature-grid">
-            <div class="feature-card">
-                <div class="icon">&#127776;</div>
-                <h4>20 Hand-Crafted Waves</h4>
-                <p>Every wave has its own music, skybox, and unique gameplay mechanic. From stealth fields to gravity wells, no two waves play the same.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128165;</div>
-                <h4>Epic Boss Battles</h4>
-                <p>Face the Guardian's orbiting asteroid shield at Wave 10, then take on the 4-phase Planet Breaker in the ultimate showdown at Wave 20.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9889;</div>
-                <h4>8 Stackable Powerups</h4>
-                <p>Shield, Rapid Fire, Spread Shot, Instant Kill, and more. Combine them for devastating combos like the 6-bullet barrage.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127911;</div>
-                <h4>20 Original Music Tracks</h4>
-                <p>Each wave features its own composed soundtrack, with smooth crossfade transitions as you progress deeper into the asteroid belt.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128225;</div>
-                <h4>Radio Narrative</h4>
-                <p>Typewriter-style transmissions from HQ and your Ship AI tell the story of the missing Ariadne crew as you navigate the Kepler-442 system.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127918;</div>
-                <h4>Retro Easter Egg</h4>
-                <p>Discover the hidden classic 2D Asteroids game with chiptune music. A love letter to the 1979 original, right inside the game.</p>
-            </div>
+            <div class="feature-card"><div class="icon">&#127776;</div><h4 data-i18n="f1_title">20 Hand-Crafted Waves</h4><p data-i18n="f1_desc">Every wave has its own music, skybox, and unique gameplay mechanic. From stealth fields to gravity wells, no two waves play the same.</p></div>
+            <div class="feature-card"><div class="icon">&#128165;</div><h4 data-i18n="f2_title">Epic Boss Battles</h4><p data-i18n="f2_desc">Face the Guardian's orbiting asteroid shield at Wave 10, then take on the 4-phase Planet Breaker in the ultimate showdown at Wave 20.</p></div>
+            <div class="feature-card"><div class="icon">&#9889;</div><h4 data-i18n="f3_title">8 Stackable Powerups</h4><p data-i18n="f3_desc">Shield, Rapid Fire, Spread Shot, Instant Kill, and more. Combine them for devastating combos like the 6-bullet barrage.</p></div>
+            <div class="feature-card"><div class="icon">&#127911;</div><h4 data-i18n="f4_title">20 Original Music Tracks</h4><p data-i18n="f4_desc">Each wave features its own composed soundtrack, with smooth crossfade transitions as you progress deeper into the asteroid belt.</p></div>
+            <div class="feature-card"><div class="icon">&#128225;</div><h4 data-i18n="f5_title">Radio Narrative</h4><p data-i18n="f5_desc">Typewriter-style transmissions from HQ and your Ship AI tell the story of the missing Ariadne crew as you navigate the Kepler-442 system.</p></div>
+            <div class="feature-card"><div class="icon">&#127918;</div><h4 data-i18n="f6_title">Retro Easter Egg</h4><p data-i18n="f6_desc">Discover the hidden classic 2D Asteroids game with chiptune music. A love letter to the 1979 original, right inside the game.</p></div>
         </div>
     </div>
-
 </section>
 
-<!-- ===== SUPPORT ===== -->
 <section id="support" class="support">
     <div class="support-content">
-        <h3>Support</h3>
-        <p>Having trouble with a game or want to report a bug? We're here to help.</p>
-        <a href="mailto:support@lestrolls.net" class="email">support@lestrolls.net</a>
+        <h3 data-i18n="support_title">Support</h3>
+        <p data-i18n="support_desc">Having trouble with a game or want to report a bug? Open an issue on our GitHub tracker.</p>
+        <a href="https://github.com/emileguyot/lestrolls-editions/issues" class="email" data-i18n="support_btn">Open an Issue on GitHub</a>
     </div>
 </section>
 
-<!-- ===== PRIVACY ===== -->
 <section id="privacy" class="privacy">
-    <h3>Privacy Policy</h3>
-    <p><strong>Last updated:</strong> March 24, 2026</p>
-
-    <p>Les Trolls Editions ("we", "us") respects your privacy. This policy explains how our games handle your data.</p>
-
-    <h4 style="margin-top: 24px; margin-bottom: 8px; color: var(--text-primary);">Data We Collect</h4>
-    <p>Our games collect <strong>no personal data</strong>. We do not track you, sell your information, or use analytics.</p>
-
-    <h4 style="margin-top: 24px; margin-bottom: 8px; color: var(--text-primary);">Third-Party Services</h4>
+    <h3 data-i18n="privacy_title">Privacy Policy</h3>
+    <p><strong data-i18n="privacy_updated">Last updated:</strong> March 24, 2026</p>
+    <p data-i18n="privacy_intro">Les Trolls Editions ("we", "us") respects your privacy. This policy explains how our games handle your data.</p>
+    <h4 data-i18n="privacy_collect_title">Data We Collect</h4>
+    <p data-i18n="privacy_collect_desc">Our games collect <strong>no personal data</strong>. We do not track you, sell your information, or use analytics.</p>
+    <h4 data-i18n="privacy_third_title">Third-Party Services</h4>
     <ul>
-        <li><strong>Apple Game Center:</strong> If you sign in to Game Center, Apple handles your player profile and leaderboard data according to <a href="https://www.apple.com/privacy/" style="color: var(--accent);">Apple's Privacy Policy</a>.</li>
-        <li><strong>App Store (In-App Purchases):</strong> Purchase transactions are processed by Apple. We do not access your payment information.</li>
+        <li data-i18n="privacy_gc">Apple Game Center: If you sign in to Game Center, Apple handles your player profile and leaderboard data according to Apple's Privacy Policy.</li>
+        <li data-i18n="privacy_iap">App Store (In-App Purchases): Purchase transactions are processed by Apple. We do not access your payment information.</li>
     </ul>
-
-    <h4 style="margin-top: 24px; margin-bottom: 8px; color: var(--text-primary);">Local Data</h4>
-    <p>Game settings (volume, sensitivity) and high scores are stored locally on your device. They are never transmitted to any server.</p>
-
-    <h4 style="margin-top: 24px; margin-bottom: 8px; color: var(--text-primary);">Children's Privacy</h4>
-    <p>Our games do not knowingly collect any data from children under 13.</p>
-
-    <h4 style="margin-top: 24px; margin-bottom: 8px; color: var(--text-primary);">Contact</h4>
-    <p>Questions about this policy? Email us at <a href="mailto:support@lestrolls.net" style="color: var(--accent);">support@lestrolls.net</a>.</p>
+    <h4 data-i18n="privacy_local_title">Local Data</h4>
+    <p data-i18n="privacy_local_desc">Game settings (volume, sensitivity) and high scores are stored locally on your device. They are never transmitted to any server.</p>
+    <h4 data-i18n="privacy_children_title">Children's Privacy</h4>
+    <p data-i18n="privacy_children_desc">Our games do not knowingly collect any data from children under 13.</p>
+    <h4 data-i18n="privacy_contact_title">Contact</h4>
+    <p><span data-i18n="privacy_contact_desc">Questions about this policy?</span> <a href="https://github.com/emileguyot/lestrolls-editions/issues" data-i18n="privacy_contact_link">Open an issue on GitHub</a>.</p>
 </section>
 
 <footer>
-    <p>&copy; 2026 Les Trolls Editions. All rights reserved.</p>
+    <p>&copy; 2026 Les Trolls Editions.</p>
     <p style="margin-top: 8px;">
-        <a href="#privacy">Privacy Policy</a> &middot;
-        <a href="#support">Support</a> &middot;
+        <a href="#privacy" data-i18n="nav_privacy">Privacy Policy</a> &middot;
+        <a href="#support" data-i18n="nav_support">Support</a> &middot;
         <a href="#asteroid3d">Asteroid 3D</a>
     </p>
 </footer>
+
+<script>
+const LANGS = {
+en: { name: "English", dir: "ltr",
+    studio_tagline: "Independent game studio crafting immersive experiences",
+    nav_support: "Support", nav_privacy: "Privacy",
+    tagline: "20 waves. 20 worlds. One pilot. The most complete asteroid game on the App Store.",
+    cta: "Download on the App Store",
+    gallery_title: "Gameplay", features_title: "Features",
+    f1_title: "20 Hand-Crafted Waves", f1_desc: "Every wave has its own music, skybox, and unique gameplay mechanic. From stealth fields to gravity wells, no two waves play the same.",
+    f2_title: "Epic Boss Battles", f2_desc: "Face the Guardian's orbiting asteroid shield at Wave 10, then take on the 4-phase Planet Breaker in the ultimate showdown at Wave 20.",
+    f3_title: "8 Stackable Powerups", f3_desc: "Shield, Rapid Fire, Spread Shot, Instant Kill, and more. Combine them for devastating combos like the 6-bullet barrage.",
+    f4_title: "20 Original Music Tracks", f4_desc: "Each wave features its own composed soundtrack, with smooth crossfade transitions as you progress deeper into the asteroid belt.",
+    f5_title: "Radio Narrative", f5_desc: "Typewriter-style transmissions from HQ and your Ship AI tell the story of the missing Ariadne crew as you navigate the Kepler-442 system.",
+    f6_title: "Retro Easter Egg", f6_desc: "Discover the hidden classic 2D Asteroids game with chiptune music. A love letter to the 1979 original, right inside the game.",
+    support_title: "Support", support_desc: "Having trouble with a game or want to report a bug? Open an issue on our GitHub tracker.", support_btn: "Open an Issue on GitHub",
+    privacy_title: "Privacy Policy", privacy_updated: "Last updated:", privacy_intro: 'Les Trolls Editions ("we", "us") respects your privacy. This policy explains how our games handle your data.',
+    privacy_collect_title: "Data We Collect", privacy_collect_desc: "Our games collect no personal data. We do not track you, sell your information, or use analytics.",
+    privacy_third_title: "Third-Party Services", privacy_gc: "Apple Game Center: If you sign in to Game Center, Apple handles your player profile and leaderboard data according to Apple's Privacy Policy.", privacy_iap: "App Store (In-App Purchases): Purchase transactions are processed by Apple. We do not access your payment information.",
+    privacy_local_title: "Local Data", privacy_local_desc: "Game settings (volume, sensitivity) and high scores are stored locally on your device. They are never transmitted to any server.",
+    privacy_children_title: "Children's Privacy", privacy_children_desc: "Our games do not knowingly collect any data from children under 13.",
+    privacy_contact_title: "Contact", privacy_contact_desc: "Questions about this policy?", privacy_contact_link: "Open an issue on GitHub"
+},
+fr: { name: "Francais", dir: "ltr",
+    studio_tagline: "Studio de jeux independant creant des experiences immersives",
+    nav_support: "Assistance", nav_privacy: "Confidentialite",
+    tagline: "20 vagues. 20 mondes. Un pilote. Le jeu d'asteroides le plus complet de l'App Store.",
+    cta: "Telecharger sur l'App Store",
+    gallery_title: "Gameplay", features_title: "Fonctionnalites",
+    f1_title: "20 vagues uniques", f1_desc: "Chaque vague a sa propre musique, son skybox et sa mecanique de jeu unique. Des champs furtifs aux puits de gravite, aucune vague ne se joue de la meme facon.",
+    f2_title: "Combats de boss epiques", f2_desc: "Affrontez le bouclier d'asteroides du Guardian a la vague 10, puis le Planet Breaker en 4 phases a la vague 20.",
+    f3_title: "8 bonus cumulables", f3_desc: "Bouclier, Tir rapide, Tir disperse, Mort instantanee et plus. Combinez-les pour des combos devastateurs.",
+    f4_title: "20 pistes musicales originales", f4_desc: "Chaque vague a sa propre bande sonore avec des transitions douces a mesure que vous progressez dans la ceinture d'asteroides.",
+    f5_title: "Narration radio", f5_desc: "Des transmissions du QG et de l'IA du vaisseau racontent l'histoire de l'equipage disparu de l'Ariadne dans le systeme Kepler-442.",
+    f6_title: "Easter egg retro", f6_desc: "Decouvrez le jeu classique Asteroids 2D cache avec musique chiptune. Un hommage a l'original de 1979.",
+    support_title: "Assistance", support_desc: "Un probleme avec un jeu ou un bug a signaler ? Ouvrez un ticket sur notre GitHub.", support_btn: "Ouvrir un ticket sur GitHub",
+    privacy_title: "Politique de confidentialite", privacy_updated: "Derniere mise a jour :", privacy_intro: "Les Trolls Editions respecte votre vie privee. Cette politique explique comment nos jeux traitent vos donnees.",
+    privacy_collect_title: "Donnees collectees", privacy_collect_desc: "Nos jeux ne collectent aucune donnee personnelle. Nous ne vous pistons pas, ne vendons pas vos informations et n'utilisons pas d'outils d'analyse.",
+    privacy_third_title: "Services tiers", privacy_gc: "Apple Game Center : si vous vous connectez a Game Center, Apple gere votre profil joueur et vos donnees de classement conformement a la politique de confidentialite d'Apple.", privacy_iap: "App Store (achats integres) : les transactions sont traitees par Apple. Nous n'avons pas acces a vos informations de paiement.",
+    privacy_local_title: "Donnees locales", privacy_local_desc: "Les parametres du jeu (volume, sensibilite) et les meilleurs scores sont stockes localement sur votre appareil. Ils ne sont jamais transmis a un serveur.",
+    privacy_children_title: "Vie privee des enfants", privacy_children_desc: "Nos jeux ne collectent sciemment aucune donnee d'enfants de moins de 13 ans.",
+    privacy_contact_title: "Contact", privacy_contact_desc: "Des questions sur cette politique ?", privacy_contact_link: "Ouvrir un ticket sur GitHub"
+},
+de: { name: "Deutsch", dir: "ltr",
+    studio_tagline: "Unabhangiges Spielestudio fur immersive Erlebnisse",
+    nav_support: "Support", nav_privacy: "Datenschutz",
+    tagline: "20 Wellen. 20 Welten. Ein Pilot. Das umfangreichste Asteroidenspiel im App Store.",
+    cta: "Im App Store laden",
+    gallery_title: "Gameplay", features_title: "Features",
+    f1_title: "20 einzigartige Wellen", f1_desc: "Jede Welle hat eigene Musik, Skybox und Spielmechanik. Von Tarnfeldern bis Gravitationsbrunnen — keine Welle gleicht der anderen.",
+    f2_title: "Epische Bosskampfe", f2_desc: "Stelle dich dem Asteroidenschild des Guardian in Welle 10 und dem 4-Phasen Planet Breaker in Welle 20.",
+    f3_title: "8 kombinierbare Powerups", f3_desc: "Schild, Schnellfeuer, Streuschluss, Sofortkill und mehr. Kombiniere sie fur verheerende Combos.",
+    f4_title: "20 originale Musiktracks", f4_desc: "Jede Welle hat ihren eigenen Soundtrack mit sanften Ubergangen, wahrend du tiefer in den Asteroidengurtel vordringst.",
+    f5_title: "Radio-Erzahlung", f5_desc: "Fernschreiben vom HQ und der Schiffs-KI erzahlen die Geschichte der vermissten Ariadne-Crew im Kepler-442-System.",
+    f6_title: "Retro-Easter-Egg", f6_desc: "Entdecke das versteckte klassische 2D-Asteroids-Spiel mit Chiptune-Musik. Eine Hommage an das Original von 1979.",
+    support_title: "Support", support_desc: "Probleme mit einem Spiel oder einen Bug gefunden? Erstelle ein Issue auf GitHub.", support_btn: "Issue auf GitHub erstellen",
+    privacy_title: "Datenschutzrichtlinie", privacy_updated: "Zuletzt aktualisiert:", privacy_intro: "Les Trolls Editions respektiert Ihre Privatsphare. Diese Richtlinie erklart, wie unsere Spiele mit Ihren Daten umgehen.",
+    privacy_collect_title: "Erhobene Daten", privacy_collect_desc: "Unsere Spiele erheben keine personenbezogenen Daten. Wir verfolgen Sie nicht, verkaufen Ihre Daten nicht und nutzen keine Analysetools.",
+    privacy_third_title: "Drittanbieterdienste", privacy_gc: "Apple Game Center: Wenn Sie sich bei Game Center anmelden, verwaltet Apple Ihr Spielerprofil gema der Datenschutzrichtlinie von Apple.", privacy_iap: "App Store (In-App-Kaufe): Kaufvorgange werden von Apple abgewickelt. Wir haben keinen Zugriff auf Ihre Zahlungsinformationen.",
+    privacy_local_title: "Lokale Daten", privacy_local_desc: "Spieleinstellungen (Lautstarke, Empfindlichkeit) und Highscores werden lokal auf Ihrem Gerat gespeichert und nie an einen Server ubertragen.",
+    privacy_children_title: "Datenschutz fur Kinder", privacy_children_desc: "Unsere Spiele erheben wissentlich keine Daten von Kindern unter 13 Jahren.",
+    privacy_contact_title: "Kontakt", privacy_contact_desc: "Fragen zu dieser Richtlinie?", privacy_contact_link: "Issue auf GitHub erstellen"
+},
+es: { name: "Espanol", dir: "ltr",
+    studio_tagline: "Estudio de juegos independiente creando experiencias inmersivas",
+    nav_support: "Soporte", nav_privacy: "Privacidad",
+    tagline: "20 oleadas. 20 mundos. Un piloto. El juego de asteroides mas completo en la App Store.",
+    cta: "Descargar en la App Store",
+    gallery_title: "Jugabilidad", features_title: "Caracteristicas",
+    f1_title: "20 oleadas unicas", f1_desc: "Cada oleada tiene su propia musica, escenario y mecanica. Desde campos de sigilo hasta pozos de gravedad, ninguna oleada se juega igual.",
+    f2_title: "Batallas de jefes epicas", f2_desc: "Enfrenta el escudo de asteroides del Guardian en la oleada 10 y al Planet Breaker de 4 fases en la oleada 20.",
+    f3_title: "8 potenciadores combinables", f3_desc: "Escudo, Disparo rapido, Disparo disperso, Muerte instantanea y mas. Combinalos para combos devastadores.",
+    f4_title: "20 pistas musicales originales", f4_desc: "Cada oleada tiene su propia banda sonora con transiciones suaves a medida que avanzas en el cinturon de asteroides.",
+    f5_title: "Narrativa por radio", f5_desc: "Transmisiones del cuartel general y la IA de la nave cuentan la historia de la tripulacion perdida del Ariadne en el sistema Kepler-442.",
+    f6_title: "Easter egg retro", f6_desc: "Descubre el juego clasico Asteroids 2D oculto con musica chiptune. Un homenaje al original de 1979.",
+    support_title: "Soporte", support_desc: "Problemas con un juego o quieres reportar un error? Abre un issue en GitHub.", support_btn: "Abrir issue en GitHub",
+    privacy_title: "Politica de privacidad", privacy_updated: "Ultima actualizacion:", privacy_intro: "Les Trolls Editions respeta tu privacidad. Esta politica explica como nuestros juegos manejan tus datos.",
+    privacy_collect_title: "Datos que recopilamos", privacy_collect_desc: "Nuestros juegos no recopilan datos personales. No te rastreamos, no vendemos tu informacion ni usamos herramientas de analisis.",
+    privacy_third_title: "Servicios de terceros", privacy_gc: "Apple Game Center: si inicias sesion en Game Center, Apple gestiona tu perfil y datos de clasificacion segun la politica de privacidad de Apple.", privacy_iap: "App Store (compras dentro de la app): las transacciones son procesadas por Apple. No accedemos a tu informacion de pago.",
+    privacy_local_title: "Datos locales", privacy_local_desc: "Los ajustes del juego (volumen, sensibilidad) y las puntuaciones se almacenan localmente en tu dispositivo y nunca se transmiten a un servidor.",
+    privacy_children_title: "Privacidad de menores", privacy_children_desc: "Nuestros juegos no recopilan datos de menores de 13 anos.",
+    privacy_contact_title: "Contacto", privacy_contact_desc: "Preguntas sobre esta politica?", privacy_contact_link: "Abrir issue en GitHub"
+},
+ja: { name: "Japanese", dir: "ltr",
+    studio_tagline: "没入型体験を創造する独立系ゲームスタジオ", nav_support: "サポート", nav_privacy: "プライバシー",
+    tagline: "20ウェーブ。20の世界。一人のパイロット。App Store史上最も完成度の高いアステロイドゲーム。", cta: "App Storeでダウンロード",
+    gallery_title: "ゲームプレイ", features_title: "機能",
+    f1_title: "20のユニークなウェーブ", f1_desc: "各ウェーブには独自の音楽、スカイボックス、ゲームメカニクスがあります。ステルスフィールドから重力井戸まで、同じウェーブは二つとありません。",
+    f2_title: "壮大なボス戦", f2_desc: "ウェーブ10でガーディアンの小惑星シールドに立ち向かい、ウェーブ20で4フェーズのプラネットブレイカーに挑戦。",
+    f3_title: "8つの重複可能パワーアップ", f3_desc: "シールド、ラピッドファイア、スプレッドショット、インスタントキルなど。組み合わせて強力なコンボを発動。",
+    f4_title: "20のオリジナル楽曲", f4_desc: "各ウェーブに固有のサウンドトラック。小惑星帯の奥深くへ進むにつれてスムーズに切り替わります。",
+    f5_title: "ラジオナラティブ", f5_desc: "司令部と船のAIからのタイプライター風通信が、ケプラー442星系で行方不明のアリアドネ乗組員の物語を伝えます。",
+    f6_title: "レトロイースターエッグ", f6_desc: "チップチューン音楽の隠された2Dアステロイドクラシックゲーム。1979年のオリジナルへのオマージュ。",
+    support_title: "サポート", support_desc: "ゲームに問題がある場合やバグを報告したい場合は、GitHubでIssueを作成してください。", support_btn: "GitHubでIssueを作成",
+    privacy_title: "プライバシーポリシー", privacy_updated: "最終更新日:", privacy_intro: "Les Trolls Editionsはお客様のプライバシーを尊重します。このポリシーでは、ゲームがお客様のデータをどのように取り扱うかを説明します。",
+    privacy_collect_title: "収集するデータ", privacy_collect_desc: "当社のゲームは個人データを一切収集しません。追跡、情報の販売、分析ツールの使用は行いません。",
+    privacy_third_title: "サードパーティサービス", privacy_gc: "Apple Game Center：Game Centerにサインインすると、Appleのプライバシーポリシーに従ってAppleがプロフィールとリーダーボードデータを管理します。", privacy_iap: "App Store（アプリ内課金）：購入取引はAppleが処理します。お支払い情報にはアクセスしません。",
+    privacy_local_title: "ローカルデータ", privacy_local_desc: "ゲーム設定（音量、感度）とハイスコアはデバイス上にローカル保存され、サーバーに送信されることはありません。",
+    privacy_children_title: "子供のプライバシー", privacy_children_desc: "当社のゲームは13歳未満の子供のデータを意図的に収集しません。",
+    privacy_contact_title: "お問い合わせ", privacy_contact_desc: "このポリシーについてご質問は？", privacy_contact_link: "GitHubでIssueを作成"
+},
+zh: { name: "Chinese", dir: "ltr",
+    studio_tagline: "创造沉浸式体验的独立游戏工作室", nav_support: "支持", nav_privacy: "隐私",
+    tagline: "20个波次。20个世界。一位飞行员。App Store上最完整的小行星游戏。", cta: "在App Store下载",
+    gallery_title: "游戏画面", features_title: "游戏特色",
+    f1_title: "20个独特波次", f1_desc: "每个波次都有独特的音乐、天空盒和游戏机制。从隐身场到引力井，没有两个波次是相同的。",
+    f2_title: "史诗Boss战", f2_desc: "在第10波挑战守护者的小行星盾牌，在第20波对决4阶段的行星破碎者。",
+    f3_title: "8种可叠加增益", f3_desc: "护盾、速射、散射、秒杀等。组合它们释放毁灭性连击。",
+    f4_title: "20首原创音乐", f4_desc: "每个波次都有独特的配乐，随着深入小行星带平滑过渡。",
+    f5_title: "无线电叙事", f5_desc: "来自总部和飞船AI的打字机式传输，讲述在开普勒442星系中失踪的阿里阿德涅船员的故事。",
+    f6_title: "复古彩蛋", f6_desc: "发现隐藏的经典2D小行星游戏，配有芯片音乐。向1979年原作致敬。",
+    support_title: "支持", support_desc: "游戏遇到问题或要报告Bug？请在GitHub上提交Issue。", support_btn: "在GitHub上提交Issue",
+    privacy_title: "隐私政策", privacy_updated: "最后更新：", privacy_intro: "Les Trolls Editions尊重您的隐私。本政策说明我们的游戏如何处理您的数据。",
+    privacy_collect_title: "收集的数据", privacy_collect_desc: "我们的游戏不收集任何个人数据。我们不会追踪您、出售您的信息或使用分析工具。",
+    privacy_third_title: "第三方服务", privacy_gc: "Apple Game Center：如果您登录Game Center，Apple会根据其隐私政策管理您的玩家资料和排行榜数据。", privacy_iap: "App Store（应用内购买）：购买交易由Apple处理。我们不会访问您的支付信息。",
+    privacy_local_title: "本地数据", privacy_local_desc: "游戏设置（音量、灵敏度）和最高分存储在您的设备本地，不会传输到任何服务器。",
+    privacy_children_title: "儿童隐私", privacy_children_desc: "我们的游戏不会故意收集13岁以下儿童的数据。",
+    privacy_contact_title: "联系我们", privacy_contact_desc: "对此政策有疑问？", privacy_contact_link: "在GitHub上提交Issue"
+},
+ko: { name: "Korean", dir: "ltr",
+    studio_tagline: "몰입형 경험을 만드는 독립 게임 스튜디오", nav_support: "지원", nav_privacy: "개인정보",
+    tagline: "20웨이브. 20개의 세계. 한 명의 파일럿. App Store에서 가장 완성도 높은 소행성 게임.", cta: "App Store에서 다운로드",
+    gallery_title: "게임플레이", features_title: "기능",
+    f1_title: "20개의 고유한 웨이브", f1_desc: "각 웨이브마다 고유한 음악, 스카이박스, 게임 메카닉이 있습니다. 스텔스 필드부터 중력 우물까지, 같은 웨이브는 없습니다.",
+    f2_title: "장대한 보스전", f2_desc: "10웨이브에서 가디언의 소행성 방패에 맞서고, 20웨이브에서 4단계 플래닛 브레이커와 대결하세요.",
+    f3_title: "8가지 중첩 가능한 파워업", f3_desc: "실드, 속사, 확산탄, 즉사 등. 조합하여 강력한 콤보를 발동하세요.",
+    f4_title: "20개의 오리지널 음악 트랙", f4_desc: "각 웨이브마다 고유한 사운드트랙이 있으며, 소행성 벨트 깊숙이 진행할수록 부드럽게 전환됩니다.",
+    f5_title: "라디오 내러티브", f5_desc: "본부와 함선 AI의 타자기 스타일 전송이 케플러-442 시스템에서 실종된 아리아드네 승무원의 이야기를 전합니다.",
+    f6_title: "레트로 이스터 에그", f6_desc: "칩튠 음악의 숨겨진 클래식 2D 소행성 게임을 발견하세요. 1979년 원작에 대한 오마주.",
+    support_title: "지원", support_desc: "게임에 문제가 있거나 버그를 신고하고 싶으신가요? GitHub에서 Issue를 생성하세요.", support_btn: "GitHub에서 Issue 생성",
+    privacy_title: "개인정보 처리방침", privacy_updated: "마지막 업데이트:", privacy_intro: "Les Trolls Editions는 여러분의 개인정보를 존중합니다. 이 정책은 게임이 데이터를 어떻게 처리하는지 설명합니다.",
+    privacy_collect_title: "수집하는 데이터", privacy_collect_desc: "우리 게임은 개인 데이터를 수집하지 않습니다. 추적, 정보 판매, 분석 도구 사용을 하지 않습니다.",
+    privacy_third_title: "제3자 서비스", privacy_gc: "Apple Game Center: Game Center에 로그인하면 Apple이 개인정보 보호정책에 따라 플레이어 프로필과 리더보드 데이터를 관리합니다.", privacy_iap: "App Store (인앱 구매): 구매 거래는 Apple이 처리합니다. 결제 정보에 접근하지 않습니다.",
+    privacy_local_title: "로컬 데이터", privacy_local_desc: "게임 설정(볼륨, 감도)과 최고 점수는 기기에 로컬 저장되며 서버로 전송되지 않습니다.",
+    privacy_children_title: "아동 개인정보", privacy_children_desc: "우리 게임은 13세 미만 아동의 데이터를 의도적으로 수집하지 않습니다.",
+    privacy_contact_title: "문의", privacy_contact_desc: "이 정책에 대한 질문이 있으신가요?", privacy_contact_link: "GitHub에서 Issue 생성"
+},
+pt: { name: "Portugues", dir: "ltr",
+    studio_tagline: "Estudio de jogos independente criando experiencias imersivas", nav_support: "Suporte", nav_privacy: "Privacidade",
+    tagline: "20 ondas. 20 mundos. Um piloto. O jogo de asteroides mais completo da App Store.", cta: "Baixar na App Store",
+    gallery_title: "Gameplay", features_title: "Recursos",
+    f1_title: "20 ondas unicas", f1_desc: "Cada onda tem musica, cenario e mecanica proprios. De campos de invisibilidade a pocos gravitacionais, nenhuma onda e igual.",
+    f2_title: "Batalhas de chefes epicas", f2_desc: "Enfrente o escudo de asteroides do Guardian na onda 10 e o Planet Breaker de 4 fases na onda 20.",
+    f3_title: "8 poderes combinaveis", f3_desc: "Escudo, Tiro Rapido, Tiro Disperso, Morte Instantanea e mais. Combine para combos devastadores.",
+    f4_title: "20 faixas musicais originais", f4_desc: "Cada onda tem sua propria trilha sonora com transicoes suaves conforme voce avanca no cinturao de asteroides.",
+    f5_title: "Narrativa por radio", f5_desc: "Transmissoes do QG e da IA da nave contam a historia da tripulacao desaparecida da Ariadne no sistema Kepler-442.",
+    f6_title: "Easter egg retro", f6_desc: "Descubra o jogo classico Asteroids 2D escondido com musica chiptune. Uma homenagem ao original de 1979.",
+    support_title: "Suporte", support_desc: "Problemas com um jogo ou quer reportar um bug? Abra uma issue no GitHub.", support_btn: "Abrir issue no GitHub",
+    privacy_title: "Politica de Privacidade", privacy_updated: "Ultima atualizacao:", privacy_intro: "Les Trolls Editions respeita sua privacidade. Esta politica explica como nossos jogos tratam seus dados.",
+    privacy_collect_title: "Dados coletados", privacy_collect_desc: "Nossos jogos nao coletam dados pessoais. Nao rastreamos, vendemos informacoes ou usamos ferramentas de analise.",
+    privacy_third_title: "Servicos de terceiros", privacy_gc: "Apple Game Center: ao entrar no Game Center, a Apple gerencia seu perfil e dados de classificacao conforme sua politica de privacidade.", privacy_iap: "App Store (compras no app): transacoes sao processadas pela Apple. Nao acessamos suas informacoes de pagamento.",
+    privacy_local_title: "Dados locais", privacy_local_desc: "Configuracoes do jogo (volume, sensibilidade) e recordes sao armazenados localmente no dispositivo e nunca transmitidos a um servidor.",
+    privacy_children_title: "Privacidade infantil", privacy_children_desc: "Nossos jogos nao coletam intencionalmente dados de criancas menores de 13 anos.",
+    privacy_contact_title: "Contato", privacy_contact_desc: "Duvidas sobre esta politica?", privacy_contact_link: "Abrir issue no GitHub"
+},
+it: { name: "Italiano", dir: "ltr",
+    studio_tagline: "Studio di giochi indipendente che crea esperienze immersive", nav_support: "Assistenza", nav_privacy: "Privacy",
+    tagline: "20 ondate. 20 mondi. Un pilota. Il gioco di asteroidi piu completo dell'App Store.", cta: "Scarica dall'App Store",
+    gallery_title: "Gameplay", features_title: "Funzionalita",
+    f1_title: "20 ondate uniche", f1_desc: "Ogni ondata ha musica, ambientazione e meccanica proprie. Dai campi stealth ai pozzi gravitazionali, nessuna ondata e uguale.",
+    f2_title: "Epiche battaglie con i boss", f2_desc: "Affronta lo scudo di asteroidi del Guardian all'ondata 10 e il Planet Breaker a 4 fasi all'ondata 20.",
+    f3_title: "8 potenziamenti combinabili", f3_desc: "Scudo, Fuoco rapido, Sparo a ventaglio, Uccisione istantanea e altro. Combinali per combo devastanti.",
+    f4_title: "20 tracce musicali originali", f4_desc: "Ogni ondata ha la sua colonna sonora con transizioni fluide man mano che avanzi nella cintura di asteroidi.",
+    f5_title: "Narrativa via radio", f5_desc: "Trasmissioni dal QG e dall'IA della nave raccontano la storia dell'equipaggio scomparso dell'Ariadne nel sistema Kepler-442.",
+    f6_title: "Easter egg retro", f6_desc: "Scopri il classico gioco Asteroids 2D nascosto con musica chiptune. Un omaggio all'originale del 1979.",
+    support_title: "Assistenza", support_desc: "Problemi con un gioco o vuoi segnalare un bug? Apri una issue su GitHub.", support_btn: "Apri issue su GitHub",
+    privacy_title: "Informativa sulla privacy", privacy_updated: "Ultimo aggiornamento:", privacy_intro: "Les Trolls Editions rispetta la tua privacy. Questa informativa spiega come i nostri giochi gestiscono i tuoi dati.",
+    privacy_collect_title: "Dati raccolti", privacy_collect_desc: "I nostri giochi non raccolgono dati personali. Non ti tracciamo, non vendiamo le tue informazioni e non usiamo strumenti di analisi.",
+    privacy_third_title: "Servizi di terze parti", privacy_gc: "Apple Game Center: se accedi a Game Center, Apple gestisce il tuo profilo e i dati della classifica secondo la politica sulla privacy di Apple.", privacy_iap: "App Store (acquisti in-app): le transazioni sono elaborate da Apple. Non accediamo alle tue informazioni di pagamento.",
+    privacy_local_title: "Dati locali", privacy_local_desc: "Le impostazioni di gioco (volume, sensibilita) e i punteggi migliori sono salvati localmente sul dispositivo e non vengono mai trasmessi a un server.",
+    privacy_children_title: "Privacy dei minori", privacy_children_desc: "I nostri giochi non raccolgono consapevolmente dati di minori di 13 anni.",
+    privacy_contact_title: "Contatti", privacy_contact_desc: "Domande su questa informativa?", privacy_contact_link: "Apri issue su GitHub"
+},
+ru: { name: "Russian", dir: "ltr",
+    studio_tagline: "Независимая студия, создающая захватывающие игры", nav_support: "Поддержка", nav_privacy: "Конфиденциальность",
+    tagline: "20 волн. 20 миров. Один пилот. Самая полная игра про астероиды в App Store.", cta: "Скачать в App Store",
+    gallery_title: "Геймплей", features_title: "Особенности",
+    f1_title: "20 уникальных волн", f1_desc: "У каждой волны своя музыка, скайбокс и игровая механика. От полей невидимости до гравитационных колодцев — двух одинаковых волн нет.",
+    f2_title: "Эпические битвы с боссами", f2_desc: "Сразитесь с астероидным щитом Стража на волне 10 и с 4-фазным Разрушителем планет на волне 20.",
+    f3_title: "8 суммируемых усилений", f3_desc: "Щит, Скорострельность, Веерный выстрел, Мгновенное уничтожение и другие. Комбинируйте для мощных связок.",
+    f4_title: "20 оригинальных музыкальных треков", f4_desc: "Каждая волна имеет свой саундтрек с плавными переходами по мере продвижения вглубь пояса астероидов.",
+    f5_title: "Радиоповествование", f5_desc: "Сообщения от штаба и ИИ корабля рассказывают историю пропавшего экипажа Ариадны в системе Кеплер-442.",
+    f6_title: "Ретро-пасхалка", f6_desc: "Откройте скрытую классическую 2D-игру Asteroids с чиптюн-музыкой. Дань уважения оригиналу 1979 года.",
+    support_title: "Поддержка", support_desc: "Проблемы с игрой или хотите сообщить об ошибке? Создайте Issue на GitHub.", support_btn: "Создать Issue на GitHub",
+    privacy_title: "Политика конфиденциальности", privacy_updated: "Последнее обновление:", privacy_intro: "Les Trolls Editions уважает вашу конфиденциальность. Эта политика объясняет, как наши игры обрабатывают ваши данные.",
+    privacy_collect_title: "Собираемые данные", privacy_collect_desc: "Наши игры не собирают персональные данные. Мы не отслеживаем вас, не продаём информацию и не используем аналитику.",
+    privacy_third_title: "Сторонние сервисы", privacy_gc: "Apple Game Center: при входе в Game Center Apple управляет вашим профилем и данными таблицы лидеров согласно политике конфиденциальности Apple.", privacy_iap: "App Store (встроенные покупки): транзакции обрабатываются Apple. Мы не получаем доступ к вашей платёжной информации.",
+    privacy_local_title: "Локальные данные", privacy_local_desc: "Настройки игры (громкость, чувствительность) и рекорды хранятся локально на устройстве и никогда не передаются на сервер.",
+    privacy_children_title: "Конфиденциальность детей", privacy_children_desc: "Наши игры сознательно не собирают данные детей младше 13 лет.",
+    privacy_contact_title: "Контакты", privacy_contact_desc: "Вопросы по этой политике?", privacy_contact_link: "Создать Issue на GitHub"
+},
+ar: { name: "Arabic", dir: "rtl",
+    studio_tagline: "استوديو ألعاب مستقل يصنع تجارب غامرة", nav_support: "الدعم", nav_privacy: "الخصوصية",
+    tagline: "20 موجة. 20 عالم. طيار واحد. أكثر لعبة كويكبات اكتمالاً في متجر التطبيقات.", cta: "تحميل من App Store",
+    gallery_title: "اللعب", features_title: "المميزات",
+    f1_title: "20 موجة فريدة", f1_desc: "لكل موجة موسيقاها وآلية لعبها الخاصة. من حقول التخفي إلى آبار الجاذبية، لا توجد موجتان متشابهتان.",
+    f2_title: "معارك زعماء ملحمية", f2_desc: "واجه درع الكويكبات للحارس في الموجة 10 ومحطم الكواكب ذو 4 مراحل في الموجة 20.",
+    f3_title: "8 تعزيزات قابلة للتراكم", f3_desc: "درع، إطلاق سريع، طلقة منتشرة، قتل فوري والمزيد. اجمعها لتنفيذ ضربات مدمرة.",
+    f4_title: "20 مقطوعة موسيقية أصلية", f4_desc: "لكل موجة موسيقاها التصويرية مع انتقالات سلسة كلما تعمقت في حزام الكويكبات.",
+    f5_title: "سرد عبر الراديو", f5_desc: "رسائل من المقر والذكاء الاصطناعي للسفينة تروي قصة طاقم أريادني المفقود في نظام كبلر-442.",
+    f6_title: "بيضة عيد الفصح الكلاسيكية", f6_desc: "اكتشف لعبة Asteroids ثنائية الأبعاد المخفية مع موسيقى تشيبتون. تحية لنسخة 1979 الأصلية.",
+    support_title: "الدعم", support_desc: "تواجه مشكلة في لعبة أو تريد الإبلاغ عن خطأ؟ افتح Issue على GitHub.", support_btn: "فتح Issue على GitHub",
+    privacy_title: "سياسة الخصوصية", privacy_updated: "آخر تحديث:", privacy_intro: "تحترم Les Trolls Editions خصوصيتك. توضح هذه السياسة كيف تتعامل ألعابنا مع بياناتك.",
+    privacy_collect_title: "البيانات التي نجمعها", privacy_collect_desc: "ألعابنا لا تجمع أي بيانات شخصية. لا نتتبعك ولا نبيع معلوماتك ولا نستخدم أدوات تحليل.",
+    privacy_third_title: "خدمات الطرف الثالث", privacy_gc: "Apple Game Center: إذا سجلت الدخول إلى Game Center، تدير Apple ملفك الشخصي وبيانات لوحة المتصدرين وفقاً لسياسة خصوصية Apple.", privacy_iap: "App Store (المشتريات داخل التطبيق): تتم معالجة المعاملات بواسطة Apple. لا نصل إلى معلومات الدفع الخاصة بك.",
+    privacy_local_title: "البيانات المحلية", privacy_local_desc: "إعدادات اللعبة (الصوت، الحساسية) وأعلى النتائج مخزنة محلياً على جهازك ولا يتم إرسالها إلى أي خادم.",
+    privacy_children_title: "خصوصية الأطفال", privacy_children_desc: "ألعابنا لا تجمع عن قصد أي بيانات من أطفال دون 13 عاماً.",
+    privacy_contact_title: "اتصل بنا", privacy_contact_desc: "أسئلة حول هذه السياسة؟", privacy_contact_link: "فتح Issue على GitHub"
+},
+nl: { name: "Nederlands", dir: "ltr",
+    studio_tagline: "Onafhankelijke gamestudio die meeslepende ervaringen creëert", nav_support: "Ondersteuning", nav_privacy: "Privacy",
+    tagline: "20 golven. 20 werelden. Eén piloot. Het meest complete asteroïdenspel in de App Store.", cta: "Download in de App Store",
+    gallery_title: "Gameplay", features_title: "Functies",
+    f1_title: "20 unieke golven", f1_desc: "Elke golf heeft eigen muziek, skybox en gameplay-mechaniek. Van onzichtbaarheidsvelden tot gravitatieputten, geen twee golven zijn hetzelfde.",
+    f2_title: "Epische baasgevechten", f2_desc: "Neem het op tegen het asteroïdenschild van de Guardian in golf 10 en de 4-fasen Planet Breaker in golf 20.",
+    f3_title: "8 stapelbare power-ups", f3_desc: "Schild, Snelvuur, Spreidschot, Directe Kill en meer. Combineer ze voor verwoestende combo's.",
+    f4_title: "20 originele muziektracks", f4_desc: "Elke golf heeft een eigen soundtrack met vloeiende overgangen naarmate je dieper de asteroïdengordel in gaat.",
+    f5_title: "Radiovertelling", f5_desc: "Berichten van het HQ en de scheeps-AI vertellen het verhaal van de vermiste Ariadne-bemanning in het Kepler-442-systeem.",
+    f6_title: "Retro Easter Egg", f6_desc: "Ontdek het verborgen klassieke 2D Asteroids-spel met chiptunemuziek. Een eerbetoon aan het origineel uit 1979.",
+    support_title: "Ondersteuning", support_desc: "Problemen met een spel of wil je een bug melden? Open een issue op GitHub.", support_btn: "Issue openen op GitHub",
+    privacy_title: "Privacybeleid", privacy_updated: "Laatst bijgewerkt:", privacy_intro: "Les Trolls Editions respecteert je privacy. Dit beleid legt uit hoe onze spellen met je gegevens omgaan.",
+    privacy_collect_title: "Verzamelde gegevens", privacy_collect_desc: "Onze spellen verzamelen geen persoonlijke gegevens. We volgen je niet, verkopen je informatie niet en gebruiken geen analysetools.",
+    privacy_third_title: "Diensten van derden", privacy_gc: "Apple Game Center: als je inlogt bij Game Center, beheert Apple je spelersprofiel en scoregegevens volgens het privacybeleid van Apple.", privacy_iap: "App Store (in-app aankopen): transacties worden verwerkt door Apple. Wij hebben geen toegang tot je betalingsgegevens.",
+    privacy_local_title: "Lokale gegevens", privacy_local_desc: "Spelinstellingen (volume, gevoeligheid) en highscores worden lokaal op je apparaat opgeslagen en nooit naar een server verzonden.",
+    privacy_children_title: "Privacy van kinderen", privacy_children_desc: "Onze spellen verzamelen bewust geen gegevens van kinderen onder de 13 jaar.",
+    privacy_contact_title: "Contact", privacy_contact_desc: "Vragen over dit beleid?", privacy_contact_link: "Issue openen op GitHub"
+},
+tr: { name: "Turkce", dir: "ltr",
+    studio_tagline: "Surukleyici deneyimler yaratan bagimsiz oyun studyosu", nav_support: "Destek", nav_privacy: "Gizlilik",
+    tagline: "20 dalga. 20 dunya. Bir pilot. App Store'daki en kapsamli asteroit oyunu.", cta: "App Store'dan indir",
+    gallery_title: "Oynanis", features_title: "Ozellikler",
+    f1_title: "20 benzersiz dalga", f1_desc: "Her dalganin kendine ozgu muzigi, gorseli ve oyun mekanigi var. Gizlilik alanindan yercekimi kuyularina, hicbir dalga ayni degildir.",
+    f2_title: "Epik patron savaslari", f2_desc: "10. dalgada Guardian'in asteroit kalkanina, 20. dalgada 4 fazli Planet Breaker'a meydan okuyun.",
+    f3_title: "8 birlestirilir guc takviyesi", f3_desc: "Kalkan, Hizli Ates, Daginik Ates, Aninda Oldurme ve dahasi. Yikici kombolar icin birlestirin.",
+    f4_title: "20 orijinal muzik parcasi", f4_desc: "Her dalganin kendi muzigi var. Asteroit kusaginda ilerledikce yumusak gecislerle degisir.",
+    f5_title: "Radyo anlatisi", f5_desc: "Karargah ve gemi yapay zekasindan gelen mesajlar, Kepler-442 sisteminde kaybolan Ariadne murettebatinin hikayesini anlatiyor.",
+    f6_title: "Retro paskalya yumurtasi", f6_desc: "Chiptune muzikli gizli klasik 2D Asteroids oyununu kesfedin. 1979 orijinaline saygi.",
+    support_title: "Destek", support_desc: "Bir oyunla ilgili sorun mu var veya hata mi bildirmek istiyorsunuz? GitHub'da Issue acin.", support_btn: "GitHub'da Issue ac",
+    privacy_title: "Gizlilik Politikasi", privacy_updated: "Son guncelleme:", privacy_intro: "Les Trolls Editions gizliliginize saygi duyar. Bu politika oyunlarimizin verilerinizi nasil isledigini aciklar.",
+    privacy_collect_title: "Toplanan veriler", privacy_collect_desc: "Oyunlarimiz kisisel veri toplamaz. Sizi izlemeyiz, bilgilerinizi satmayiz ve analiz araclari kullanmayiz.",
+    privacy_third_title: "Ucuncu taraf hizmetler", privacy_gc: "Apple Game Center: Game Center'a giris yaparsaniz, Apple oyuncu profilinizi ve skor tablosu verilerinizi Apple'in gizlilik politikasina gore yonetir.", privacy_iap: "App Store (uygulama ici satin alimlar): islemler Apple tarafindan gerceklestirilir. Odeme bilgilerinize erismeyiz.",
+    privacy_local_title: "Yerel veriler", privacy_local_desc: "Oyun ayarlari (ses, hassasiyet) ve en yuksek puanlar cihazinizda yerel olarak depolanir ve asla bir sunucuya iletilmez.",
+    privacy_children_title: "Cocuk gizliligi", privacy_children_desc: "Oyunlarimiz bilerek 13 yasindan kucuk cocuklardan veri toplamaz.",
+    privacy_contact_title: "Iletisim", privacy_contact_desc: "Bu politika hakkinda sorulariniz mi var?", privacy_contact_link: "GitHub'da Issue ac"
+},
+th: { name: "Thai", dir: "ltr",
+    studio_tagline: "สตูดิโอเกมอิสระที่สร้างประสบการณ์ดื่มด่ำ", nav_support: "สนับสนุน", nav_privacy: "ความเป็นส่วนตัว",
+    tagline: "20 เวฟ 20 โลก นักบินคนเดียว เกมดาวเคราะห์น้อยที่สมบูรณ์ที่สุดบน App Store", cta: "ดาวน์โหลดบน App Store",
+    gallery_title: "เกมเพลย์", features_title: "คุณสมบัติ",
+    f1_title: "20 เวฟที่ไม่ซ้ำกัน", f1_desc: "แต่ละเวฟมีเพลง สกายบ็อกซ์ และกลไกเกมเฉพาะตัว จากสนามล่องหนถึงบ่อแรงโน้มถ่วง ไม่มีสองเวฟที่เหมือนกัน",
+    f2_title: "การต่อสู้บอสระดับมหากาพย์", f2_desc: "เผชิญหน้ากับโล่ดาวเคราะห์น้อยของผู้พิทักษ์ในเวฟ 10 และ Planet Breaker 4 เฟสในเวฟ 20",
+    f3_title: "8 พาวเวอร์อัพสะสมได้", f3_desc: "โล่ ยิงเร็ว กระสุนกระจาย สังหารทันที และอื่นๆ รวมกันเพื่อคอมโบทำลายล้าง",
+    f4_title: "20 เพลงต้นฉบับ", f4_desc: "แต่ละเวฟมีเพลงประกอบเฉพาะพร้อมการเปลี่ยนผ่านที่ราบรื่นขณะคุณลึกเข้าไปในแถบดาวเคราะห์น้อย",
+    f5_title: "เรื่องราวผ่านวิทยุ", f5_desc: "ข้อความจากกองบัญชาการและ AI ของยานเล่าเรื่องราวของลูกเรือ Ariadne ที่สูญหายในระบบ Kepler-442",
+    f6_title: "อีสเตอร์เอ้กย้อนยุค", f6_desc: "ค้นพบเกม Asteroids 2D คลาสสิกที่ซ่อนอยู่พร้อมเพลงชิปจูน เป็นการคารวะต้นฉบับปี 1979",
+    support_title: "สนับสนุน", support_desc: "มีปัญหากับเกมหรือต้องการรายงานบั๊ก? เปิด Issue บน GitHub", support_btn: "เปิด Issue บน GitHub",
+    privacy_title: "นโยบายความเป็นส่วนตัว", privacy_updated: "อัปเดตล่าสุด:", privacy_intro: "Les Trolls Editions เคารพความเป็นส่วนตัวของคุณ นโยบายนี้อธิบายว่าเกมของเราจัดการข้อมูลของคุณอย่างไร",
+    privacy_collect_title: "ข้อมูลที่เราเก็บ", privacy_collect_desc: "เกมของเราไม่เก็บข้อมูลส่วนบุคคล เราไม่ติดตาม ไม่ขายข้อมูล และไม่ใช้เครื่องมือวิเคราะห์",
+    privacy_third_title: "บริการของบุคคลที่สาม", privacy_gc: "Apple Game Center: หากคุณลงชื่อเข้าใช้ Game Center Apple จะจัดการโปรไฟล์และข้อมูลลีดเดอร์บอร์ดตามนโยบายความเป็นส่วนตัวของ Apple", privacy_iap: "App Store (การซื้อในแอป): ธุรกรรมการซื้อดำเนินการโดย Apple เราไม่เข้าถึงข้อมูลการชำระเงินของคุณ",
+    privacy_local_title: "ข้อมูลในเครื่อง", privacy_local_desc: "การตั้งค่าเกม (ระดับเสียง ความไว) และคะแนนสูงสุดเก็บไว้ในเครื่องของคุณและไม่ส่งไปยังเซิร์ฟเวอร์ใดๆ",
+    privacy_children_title: "ความเป็นส่วนตัวของเด็ก", privacy_children_desc: "เกมของเราไม่เก็บข้อมูลจากเด็กอายุต่ำกว่า 13 ปีโดยเจตนา",
+    privacy_contact_title: "ติดต่อ", privacy_contact_desc: "มีคำถามเกี่ยวกับนโยบายนี้?", privacy_contact_link: "เปิด Issue บน GitHub"
+}
+};
+
+let currentLang = "en";
+
+function setLang(lang) {
+    const t = LANGS[lang];
+    if (!t) return;
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = t.dir || "ltr";
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (t[key]) el.textContent = t[key];
+    });
+    document.getElementById("langBtn").textContent = lang.toUpperCase();
+    document.querySelectorAll(".lang-menu button").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+    });
+    document.getElementById("langMenu").classList.remove("open");
+    localStorage.setItem("lang", lang);
+}
+
+// Build language menu
+const menu = document.getElementById("langMenu");
+for (const [code, data] of Object.entries(LANGS)) {
+    const btn = document.createElement("button");
+    btn.textContent = `${code.toUpperCase()} — ${data.name}`;
+    btn.dataset.lang = code;
+    btn.onclick = () => setLang(code);
+    menu.appendChild(btn);
+}
+
+document.getElementById("langBtn").onclick = (e) => {
+    e.stopPropagation();
+    menu.classList.toggle("open");
+};
+document.addEventListener("click", () => menu.classList.remove("open"));
+
+// Auto-detect language
+const saved = localStorage.getItem("lang");
+const browser = (navigator.language || "en").split("-")[0];
+setLang(saved || (LANGS[browser] ? browser : "en"));
+</script>
 
 </body>
 </html>
